@@ -1,0 +1,328 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ------------------------------------------- */
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: grey;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  min-height: 0;
+  min-width: 0;
+}
+
+.draft-area {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 0;
+  min-width: 0;
+}
+
+.draft-team {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.draft-team>.stage-separator-vertical {
+  height: 50px;
+  background-color: gray;
+}
+
+.wrapper {
+  width: 73vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.champions-container {
+  max-height: 77.8vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  overflow-y: auto;
+  min-height: 0;
+  min-width: 0;
+}
+
+.champion-container {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  height: 150px;
+}
+
+.champion-icon {
+  max-width: 150px;
+  max-height: 150px;
+  border: 3px solid;
+  border-color: black;
+}
+
+.champion>img {
+  max-width: 200px;
+  max-height: 200px;
+  border: 3px solid black;
+}
+
+.champion-pick {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.role-selection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.role-selection>img {
+  max-width: 100px;
+}
+
+.utils {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-bar {
+  height: 50px;
+  font-size: 3rem;
+  width: 300px;
+}
+
+.team-selection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-selection>img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.not-bans {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  min-height: 0;
+  min-width: 0;
+}
+
+.bans {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 0;
+  min-width: 0;
+}
+
+.draft-team-bans {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 0;
+  min-width: 0;
+}
+
+.draft-team-bans#red-team {
+  flex-direction: row-reverse;
+}
+
+.ban-separator {
+  width: 15px;
+}
+
+.pick-separator {
+  height: 15px;
+}
+
+.draft-team-bans>.champion-ban>img {
+  width: 141px;
+  height: 141px;
+  max-width: 141px;
+  max-height: 141px;
+}
+
+/*1280 × 720 pixels
+* meaning a 1.77 : 1 ratio
+* */
+.draft-team>.champion-pick>img {
+  width: 354px;
+  height: 200px;
+  max-width: 345px;
+  max-height: 200px;
+}
+
+.not-bans>.wrapper {
+  overflow-y: auto;
+}
