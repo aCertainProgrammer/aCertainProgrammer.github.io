@@ -1,4 +1,6 @@
 html {
+	width: 100vw;
+	height: 100vh;
 	background-color: #909090;
 }
 
@@ -23,6 +25,8 @@ html {
 	flex-shrink: 1;
 
 	padding: 4px;
+
+	background-color: #707070;
 }
 
 .name-container {
