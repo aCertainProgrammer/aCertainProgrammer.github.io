@@ -2,6 +2,7 @@ backend = new Backend();
 class Frontend {
 	constructor() {
 		this.request = {
+			source: "default_data",
 			team: "all",
 			role: "all",
 			search: "",
@@ -49,6 +50,13 @@ class Frontend {
 			frontend.request.search = frontend.searchBar.value;
 			frontend.render();
 		});
+		this.defaultDataSwitch = document.querySelector("#default_data");
+		this.defaultDataSwitch.addEventListener("click", () => {
+			frontend.request.source = "default_data";
+			frontend.render();
+		});
+		this.userDataSwitch = document.querySelector("#user_data");
+		this.userDataSwitch.addEventListener("click", this.showUserDataForm);
 	}
 
 	render() {
@@ -136,7 +144,6 @@ class Frontend {
 	//calling frontend. instead of this. is necessary due to how the "this"
 	//keyword works in javascript
 	selectChampion(event) {
-		console.log(frontend.renderingData.pickedChampions);
 		frontend.selectedChampion = event.target.dataset.champion;
 		if (
 			frontend.renderingData.pickedChampions.includes(
@@ -156,5 +163,50 @@ class Frontend {
 		event.target.dataset.champion = frontend.selectedChampion;
 		frontend.selectedChampion = "";
 		frontend.render();
+	}
+	showUserDataForm() {
+		const form_container = document.querySelector(
+			"#user_data_form_container",
+		);
+		if (form_container) form_container.classList.remove("hidden");
+		else {
+			frontend.createUserDataForm();
+		}
+	}
+	createUserDataForm() {
+		const container = document.querySelector("#data");
+		const form_container = document.createElement("div");
+		form_container.id = "user_data_form_container";
+		const textarea = document.createElement("textarea");
+		textarea.name = "user_data_input";
+		textarea.cols = "80";
+		textarea.rows = "10";
+		const label = document.createElement("label");
+		label.innerHTML =
+			'Read the <a href="https://github.com/aCertainProgrammer/UnnamedDraftingTool?tab=readme-ov-file#data-specification">input data specification</a>';
+		label.for = "user_data_input";
+		const button_container = document.createElement("div");
+		button_container.style.display = "flex";
+		button_container.style.flexDirection = "row";
+		const save = document.createElement("button");
+		save.innerText = "Save and load";
+		save.classList += "source-button";
+		const hide = document.createElement("button");
+		hide.innerText = "Hide";
+		hide.classList += "source-button";
+		button_container.appendChild(save);
+		button_container.appendChild(hide);
+		form_container.appendChild(label);
+		form_container.appendChild(textarea);
+		form_container.appendChild(button_container);
+		container.appendChild(form_container);
+		save.addEventListener("click", () => {
+			saveData("user_data", textarea.value);
+			frontend.request.source = "user_data";
+			frontend.render();
+		});
+		hide.addEventListener("click", () => {
+			form_container.classList += "hidden";
+		});
 	}
 }
