@@ -1,8 +1,8 @@
 import { Backend } from "./backend.js";
 import { saveData, loadData, capitalize, readFile } from "./util.js";
-const backend = new Backend();
 export class Frontend {
-	constructor() {
+	constructor(backend) {
+		this.backend = backend;
 		this.request = {
 			source: "default_data",
 			team: "all",
@@ -62,12 +62,15 @@ export class Frontend {
 			"click",
 			this.showUserDataForm.bind(this),
 		);
+		document.addEventListener(
+			"keydown",
+			this.processKeyboardInput.bind(this),
+		);
 	}
 
 	render() {
-		this.renderingData.visibleChampions = backend.requestVisibleChampions(
-			this.request,
-		);
+		this.renderingData.visibleChampions =
+			this.backend.requestVisibleChampions(this.request);
 		this.requestPickedChampions();
 		this.requestBannedChampions();
 		this.renderVisibleChampions();
@@ -227,7 +230,8 @@ export class Frontend {
 		this.render();
 	}
 	searchChampion() {
-		this.request.search = this.searchBar.value;
+		if (this.searchBar.value == " ") this.searchBar.value = "";
+		this.request.search = this.searchBar.value.replace(/\s+/g, "");
 		this.render();
 	}
 	loadDefaultData() {
@@ -248,5 +252,10 @@ export class Frontend {
 	}
 	clickInput(input) {
 		input.click();
+	}
+	processKeyboardInput(event) {
+		const key = event.key;
+		console.log(key);
+		if (key == " ") this.searchBar.focus();
 	}
 }
