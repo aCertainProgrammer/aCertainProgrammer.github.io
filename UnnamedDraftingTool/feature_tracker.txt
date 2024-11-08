@@ -1,5 +1,5 @@
 CURRENT WORK:
-    
+    - Dragging champions around from picks
 THEN:
 
 
@@ -9,7 +9,6 @@ IDEAS:
 
 - Revamp team icons
 
-- Dragging champions around from picks
 
 BUGS:
 
