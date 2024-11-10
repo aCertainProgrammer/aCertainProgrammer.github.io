@@ -8,6 +8,7 @@ export class UserInterface {
 		this.team = "all";
 		this.role = "all";
 		this.selectedChampion = "";
+		this.recentlyDragged = null;
 		this.renderingData = {
 			visibleChampions: [],
 			pickedChampions: [],
@@ -106,9 +107,7 @@ export class UserInterface {
 			event.preventDefault();
 		};
 		this.dragendFunction = function () {
-			event.target.dataset.champion = "";
-			event.target.src = this.defaultPickIconPath;
-			this.sendProcessSignal();
+			event.preventDefault();
 		}.bind(this);
 	}
 	getConfig() {
@@ -161,6 +160,11 @@ export class UserInterface {
 			this.selectedChampion = "";
 			return;
 		}
+		if (this.selectedChampion == championIcon.dataset.champion) {
+			championIcon.classList.remove("selected");
+			this.selectedChampion = "";
+			return;
+		}
 		const currentlySelectedIcon =
 			this.championsContainer.querySelector(".selected");
 		if (currentlySelectedIcon !== null)
@@ -178,9 +182,12 @@ export class UserInterface {
 	}
 	dropChampion(event) {
 		event.preventDefault();
+		const replacedChampion = event.target.dataset.champion;
+		this.recentlyDragged.dataset.champion = replacedChampion;
 		this.placeChampion(event);
 	}
 	dragChampion(event) {
+		this.recentlyDragged = event.target;
 		this.selectChampion(event);
 	}
 
@@ -375,6 +382,8 @@ export class UserInterface {
 		// Render banned champions
 		for (let i = 0; i < this.bans.length; i++) {
 			let img = this.bans[i].childNodes[1];
+			if (img.classList.contains("selected"))
+				img.classList.remove("selected");
 			if (renderingData.bannedChampions[i] == "") {
 				img.src = this.defaultBanIconPath;
 				img.dataset.champion = "";
