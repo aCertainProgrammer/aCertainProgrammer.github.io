@@ -1,13 +1,12 @@
 CURRENT WORK:
 
-THEN:
+- Keyboard shortcuts
 
+THEN:
 
 IDEAS:
 
 - Data presets (maybe some templates like "assasin midlaner", "tank toplaner" etc? This could work in the form of premade JSON snippets)
-
-- Keyboard shortcuts
 
 - Revamp team icons
 
