@@ -6,9 +6,9 @@ html {
 
 .content {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: flex-start;
 	gap: 3px;
 }
@@ -16,7 +16,7 @@ html {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	gap: 3px;
 
@@ -27,6 +27,8 @@ html {
 	padding: 4px;
 
 	background-color: #707070;
+
+	height: 350px;
 }
 
 .name-container {
@@ -47,7 +49,7 @@ html {
 }
 .thumbnail {
 	max-width: 300px;
-	max-height: 300px;
+	max-height: 147px;
 }
 
 .description-container {
